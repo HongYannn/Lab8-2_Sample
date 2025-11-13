@@ -22,7 +22,7 @@ jobs:
 
       - name: Download JUnit and Run Tests
         run: |
-          # 建立 lib 目錄並下載 JUnit 5 Console 版本
+          # 建立 libs 目錄並下載 JUnit 5 Console 版本
           mkdir -p libs
           curl -L -o libs/junit-platform-console-standalone.jar \
             https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.2/junit-platform-console-standalone-1.10.2.jar
@@ -32,4 +32,5 @@ jobs:
 
           # 執行所有測試
           java -jar libs/junit-platform-console-standalone.jar \
-            -cp "libs/junit-platform-console-standalone.jar:." --scan-classpath
+            --class-path "libs/junit-platform-console-standalone.jar:." \
+            --scan-class-path
